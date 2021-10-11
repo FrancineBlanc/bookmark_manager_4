@@ -21,3 +21,4 @@ end
 
 gem "webrick"
 gem "sinatra-reloader"
+gem "pg"

@@ -1,5 +1,9 @@
+require "pg"
+
 class Bookmark
   def self.show_bookmarks
-    ["http://www.bbc.co.uk", "https://www.w3schools.com/", "https://www.freecodecamp.org/"]
+    connection = PG.connect dbname: "bookmark_manager"
+    rs = connection.exec "SELECT * FROM bookmarks"
+    rs.map { |row| row["url"]}
   end
 end

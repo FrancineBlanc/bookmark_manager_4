@@ -1,6 +1,8 @@
 <ol>
   <%@bookmarks.each do |bookmark| %>
-    <li><%= bookmark %></li>
+    <li>
+      <a href="<%= bookmark[:url] %>"><%= bookmark[:title]%></a>
+    </li>
   <% end %>
   <form action="/bookmarks/new">
     <input type="submit" value="Create new bookmark">

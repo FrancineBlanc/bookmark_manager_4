@@ -5,13 +5,16 @@ class Bookmark
 
   def self.show_bookmarks
     self.establish_connection
-    rs = connection.exec "SELECT * FROM bookmarks;"
-    rs.map { |row| row["url"] }
+    rs = connection.exec("SELECT * FROM bookmarks;")
+    rs.map do |row| 
+      {url: row["url"],
+      title: row["title"]}
+    end
   end
 
-  def self.create(url:)
+  def self.create(url:, title:)
     self.establish_connection
-    connection.exec("INSERT INTO bookmarks(url) VALUES ('#{url}');")
+    connection.exec("INSERT INTO bookmarks(url, title) VALUES ('#{url}', '#{title}');")
   end
 
   private

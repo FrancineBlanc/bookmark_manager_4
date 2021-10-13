@@ -5,8 +5,9 @@ feature "Add new bookmark" do
 
     youtube_url = "http://www.youtube.com"
     fill_in :url, with: youtube_url
+    fill_in :title, with: "YouTube"
     click_button "Add"
 
-    expect(page).to have_content youtube_url
+    expect(page).to have_content "YouTube"
   end
 end
